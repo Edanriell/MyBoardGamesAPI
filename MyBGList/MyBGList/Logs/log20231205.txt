@@ -1,0 +1,24 @@
+20:27:37 [INF] [DESKTOP-07C1BJT #1] Now listening on: http://localhost:40443
+20:27:37 [INF] [DESKTOP-07C1BJT #1] Now listening on: http://localhost:40080
+20:27:37 [INF] [DESKTOP-07C1BJT #1] Application started. Press Ctrl+C to shut down.
+20:27:37 [INF] [DESKTOP-07C1BJT #1] Hosting environment: Development
+20:27:37 [INF] [DESKTOP-07C1BJT #1] Content root path: D:\ProjectsFromBooks\BuildingWebAPIsWithASPNETCore\MyBGList\MyBGList
+20:35:24 [INF] [DESKTOP-07C1BJT #1 ] Now listening on: http://localhost:40443
+20:35:24 [INF] [DESKTOP-07C1BJT #1 ] Now listening on: http://localhost:40080
+20:35:24 [INF] [DESKTOP-07C1BJT #1 ] Application started. Press Ctrl+C to shut down.
+20:35:24 [INF] [DESKTOP-07C1BJT #1 ] Hosting environment: Development
+20:35:24 [INF] [DESKTOP-07C1BJT #1 ] Content root path: D:\ProjectsFromBooks\BuildingWebAPIsWithASPNETCore\MyBGList\MyBGList
+23:34:34 [INF] [DESKTOP-07C1BJT #1 ] Now listening on: http://localhost:40443
+23:34:34 [INF] [DESKTOP-07C1BJT #1 ] Now listening on: http://localhost:40080
+23:34:34 [INF] [DESKTOP-07C1BJT #1 ] Application started. Press Ctrl+C to shut down.
+23:34:34 [INF] [DESKTOP-07C1BJT #1 ] Hosting environment: Development
+23:34:34 [INF] [DESKTOP-07C1BJT #1 ] Content root path: D:\ProjectsFromBooks\BuildingWebAPIsWithASPNETCore\MyBGList\MyBGList
+23:34:46 [WRN] [DESKTOP-07C1BJT #16 .NET ThreadPool Worker] Failed to determine the https port for redirect.
+23:34:46 [INF] [DESKTOP-07C1BJT #6 .NET ThreadPool Worker] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [BoardGames] AS [b]
+23:34:49 [INF] [DESKTOP-07C1BJT #6 .NET ThreadPool Worker] Executed DbCommand (17ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [b].[Id], [b].[BGGRank], [b].[ComplexityAverage], [b].[CreatedDate], [b].[LastModifiedDate], [b].[MaxPlayers], [b].[MinAge], [b].[MinPlayers], [b].[Name], [b].[OwnedUsers], [b].[PlayTime], [b].[RatingAverage], [b].[UsersRated], [b].[Year]
+FROM [BoardGames] AS [b]
+ORDER BY [b].[Name]
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY

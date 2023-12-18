@@ -1,0 +1,38 @@
+18:18:33 [ERR] [DESKTOP-07C1BJT #1 ] Failed executing DbCommand (89ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [BoardGames] ADD CONSTRAINT [FK_BoardGames_Publishers_PublisherId] FOREIGN KEY ([PublisherId]) REFERENCES [Publishers] ([Id]) ON DELETE CASCADE;
+18:24:26 [ERR] [DESKTOP-07C1BJT #1 ] Failed executing DbCommand (67ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [BoardGames] ADD CONSTRAINT [FK_BoardGames_Publishers_PublisherId] FOREIGN KEY ([PublisherId]) REFERENCES [Publishers] ([Id]) ON DELETE CASCADE;
+18:24:57 [ERR] [DESKTOP-07C1BJT #1 ] Failed executing DbCommand (59ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [BoardGames] ADD CONSTRAINT [FK_BoardGames_Publishers_PublisherId] FOREIGN KEY ([PublisherId]) REFERENCES [Publishers] ([Id]) ON DELETE CASCADE;
+18:26:22 [ERR] [DESKTOP-07C1BJT #1 ] Failed executing DbCommand (94ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [BoardGames] ADD CONSTRAINT [FK_BoardGames_Publishers_PublisherId] FOREIGN KEY ([PublisherId]) REFERENCES [Publishers] ([Id]) ON DELETE CASCADE;
+18:26:39 [ERR] [DESKTOP-07C1BJT #1 ] Failed executing DbCommand (88ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [BoardGames] ADD CONSTRAINT [FK_BoardGames_Publishers_PublisherId] FOREIGN KEY ([PublisherId]) REFERENCES [Publishers] ([Id]) ON DELETE CASCADE;
+18:26:57 [ERR] [DESKTOP-07C1BJT #1 ] Failed executing DbCommand (92ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [BoardGames] ADD CONSTRAINT [FK_BoardGames_Publishers_PublisherId] FOREIGN KEY ([PublisherId]) REFERENCES [Publishers] ([Id]) ON DELETE CASCADE;
+18:28:00 [ERR] [DESKTOP-07C1BJT #1 ] Failed executing DbCommand (91ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [BoardGames] ADD CONSTRAINT [FK_BoardGames_Publishers_PublisherId] FOREIGN KEY ([PublisherId]) REFERENCES [Publishers] ([Id]) ON DELETE CASCADE;
+18:30:28 [ERR] [DESKTOP-07C1BJT #1 ] Failed executing DbCommand (62ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [BoardGames] ADD CONSTRAINT [FK_BoardGames_Publishers_PublisherId] FOREIGN KEY ([PublisherId]) REFERENCES [Publishers] ([Id]) ON DELETE CASCADE;
+18:32:00 [ERR] [DESKTOP-07C1BJT #1 ] Failed executing DbCommand (58ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [BoardGames] ADD CONSTRAINT [FK_BoardGames_Publishers_PublisherId] FOREIGN KEY ([PublisherId]) REFERENCES [Publishers] ([Id]) ON DELETE CASCADE;
+18:35:18 [ERR] [DESKTOP-07C1BJT #1 ] Failed executing DbCommand (58ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [BoardGames] ADD CONSTRAINT [FK_BoardGames_Publishers_PublisherId] FOREIGN KEY ([PublisherId]) REFERENCES [Publishers] ([Id]) ON DELETE CASCADE;
+18:35:47 [ERR] [DESKTOP-07C1BJT #1 ] Failed executing DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [BoardGames] (
+    [Id] int NOT NULL IDENTITY,
+    [Name] nvarchar(200) NOT NULL,
+    [Year] int NOT NULL,
+    [MinPlayers] int NOT NULL,
+    [MaxPlayers] int NOT NULL,
+    [PlayTime] int NOT NULL,
+    [MinAge] int NOT NULL,
+    [UsersRated] int NOT NULL,
+    [RatingAverage] decimal(4,2) NOT NULL,
+    [BGGRank] int NOT NULL,
+    [ComplexityAverage] decimal(4,2) NOT NULL,
+    [OwnedUsers] int NOT NULL,
+    [CreatedDate] datetime2 NOT NULL,
+    [LastModifiedDate] datetime2 NOT NULL,
+    CONSTRAINT [PK_BoardGames] PRIMARY KEY ([Id])
+);

@@ -1,0 +1,862 @@
+18:18:33 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+18:18:33 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+18:18:33 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+18:18:33 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+18:18:33 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+18:18:33 [INF] [DESKTOP-07C1BJT #1 ] Applying migration '20231122211337_second_migration'.
+18:18:33 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Mechanics] ADD [Flags] int NOT NULL DEFAULT 0;
+18:18:33 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Mechanics] ADD [Notes] nvarchar(200) NOT NULL DEFAULT N'';
+18:18:33 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [BoardGames] ADD [AlternateNames] nvarchar(200) NOT NULL DEFAULT N'';
+18:18:33 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (22ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [BoardGames] ADD [Designer] nvarchar(200) NOT NULL DEFAULT N'';
+18:18:33 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (20ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [BoardGames] ADD [Flags] int NOT NULL DEFAULT 0;
+18:18:33 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (19ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [BoardGames] ADD [PublisherId] int NOT NULL DEFAULT 0;
+18:18:33 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Categories] (
+    [Id] int NOT NULL IDENTITY,
+    [Name] nvarchar(200) NOT NULL,
+    [CreatedDate] datetime2 NOT NULL,
+    [LastModifiedDate] datetime2 NOT NULL,
+    CONSTRAINT [PK_Categories] PRIMARY KEY ([Id])
+);
+18:18:33 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Publishers] (
+    [Id] int NOT NULL IDENTITY,
+    [Name] nvarchar(200) NOT NULL,
+    [CreatedDate] datetime2 NOT NULL,
+    [LastModifiedDate] datetime2 NOT NULL,
+    CONSTRAINT [PK_Publishers] PRIMARY KEY ([Id])
+);
+18:18:33 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [BoardGames_Categories] (
+    [BoardGameId] int NOT NULL,
+    [CategoryId] int NOT NULL,
+    [CreatedDate] datetime2 NOT NULL,
+    CONSTRAINT [PK_BoardGames_Categories] PRIMARY KEY ([BoardGameId], [CategoryId]),
+    CONSTRAINT [FK_BoardGames_Categories_BoardGames_BoardGameId] FOREIGN KEY ([BoardGameId]) REFERENCES [BoardGames] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_BoardGames_Categories_Categories_CategoryId] FOREIGN KEY ([CategoryId]) REFERENCES [Categories] ([Id]) ON DELETE CASCADE
+);
+18:18:33 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_BoardGames_PublisherId] ON [BoardGames] ([PublisherId]);
+18:18:33 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_BoardGames_Categories_CategoryId] ON [BoardGames_Categories] ([CategoryId]);
+18:18:33 [ERR] [DESKTOP-07C1BJT #1 ] Failed executing DbCommand (89ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [BoardGames] ADD CONSTRAINT [FK_BoardGames_Publishers_PublisherId] FOREIGN KEY ([PublisherId]) REFERENCES [Publishers] ([Id]) ON DELETE CASCADE;
+18:24:26 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+18:24:26 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+18:24:26 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+18:24:26 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+18:24:26 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+18:24:26 [INF] [DESKTOP-07C1BJT #1 ] Applying migration '20231122211337_second_migration'.
+18:24:26 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Mechanics] ADD [Flags] int NOT NULL DEFAULT 0;
+18:24:26 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Mechanics] ADD [Notes] nvarchar(200) NOT NULL DEFAULT N'';
+18:24:26 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [BoardGames] ADD [AlternateNames] nvarchar(200) NOT NULL DEFAULT N'';
+18:24:26 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [BoardGames] ADD [Designer] nvarchar(200) NOT NULL DEFAULT N'';
+18:24:26 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [BoardGames] ADD [Flags] int NOT NULL DEFAULT 0;
+18:24:26 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [BoardGames] ADD [PublisherId] int NOT NULL DEFAULT 0;
+18:24:26 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Categories] (
+    [Id] int NOT NULL IDENTITY,
+    [Name] nvarchar(200) NOT NULL,
+    [CreatedDate] datetime2 NOT NULL,
+    [LastModifiedDate] datetime2 NOT NULL,
+    CONSTRAINT [PK_Categories] PRIMARY KEY ([Id])
+);
+18:24:26 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Publishers] (
+    [Id] int NOT NULL IDENTITY,
+    [Name] nvarchar(200) NOT NULL,
+    [CreatedDate] datetime2 NOT NULL,
+    [LastModifiedDate] datetime2 NOT NULL,
+    CONSTRAINT [PK_Publishers] PRIMARY KEY ([Id])
+);
+18:24:26 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [BoardGames_Categories] (
+    [BoardGameId] int NOT NULL,
+    [CategoryId] int NOT NULL,
+    [CreatedDate] datetime2 NOT NULL,
+    CONSTRAINT [PK_BoardGames_Categories] PRIMARY KEY ([BoardGameId], [CategoryId]),
+    CONSTRAINT [FK_BoardGames_Categories_BoardGames_BoardGameId] FOREIGN KEY ([BoardGameId]) REFERENCES [BoardGames] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_BoardGames_Categories_Categories_CategoryId] FOREIGN KEY ([CategoryId]) REFERENCES [Categories] ([Id]) ON DELETE CASCADE
+);
+18:24:26 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_BoardGames_PublisherId] ON [BoardGames] ([PublisherId]);
+18:24:26 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_BoardGames_Categories_CategoryId] ON [BoardGames_Categories] ([CategoryId]);
+18:24:26 [ERR] [DESKTOP-07C1BJT #1 ] Failed executing DbCommand (67ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [BoardGames] ADD CONSTRAINT [FK_BoardGames_Publishers_PublisherId] FOREIGN KEY ([PublisherId]) REFERENCES [Publishers] ([Id]) ON DELETE CASCADE;
+18:24:57 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+18:24:57 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+18:24:57 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+18:24:57 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+18:24:57 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+18:24:57 [INF] [DESKTOP-07C1BJT #1 ] Applying migration '20231122211337_second_migration'.
+18:24:57 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Mechanics] ADD [Flags] int NOT NULL DEFAULT 0;
+18:24:57 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Mechanics] ADD [Notes] nvarchar(200) NOT NULL DEFAULT N'';
+18:24:57 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [BoardGames] ADD [AlternateNames] nvarchar(200) NOT NULL DEFAULT N'';
+18:24:57 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [BoardGames] ADD [Designer] nvarchar(200) NOT NULL DEFAULT N'';
+18:24:57 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [BoardGames] ADD [Flags] int NOT NULL DEFAULT 0;
+18:24:57 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (18ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [BoardGames] ADD [PublisherId] int NOT NULL DEFAULT 0;
+18:24:57 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Categories] (
+    [Id] int NOT NULL IDENTITY,
+    [Name] nvarchar(200) NOT NULL,
+    [CreatedDate] datetime2 NOT NULL,
+    [LastModifiedDate] datetime2 NOT NULL,
+    CONSTRAINT [PK_Categories] PRIMARY KEY ([Id])
+);
+18:24:57 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Publishers] (
+    [Id] int NOT NULL IDENTITY,
+    [Name] nvarchar(200) NOT NULL,
+    [CreatedDate] datetime2 NOT NULL,
+    [LastModifiedDate] datetime2 NOT NULL,
+    CONSTRAINT [PK_Publishers] PRIMARY KEY ([Id])
+);
+18:24:57 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [BoardGames_Categories] (
+    [BoardGameId] int NOT NULL,
+    [CategoryId] int NOT NULL,
+    [CreatedDate] datetime2 NOT NULL,
+    CONSTRAINT [PK_BoardGames_Categories] PRIMARY KEY ([BoardGameId], [CategoryId]),
+    CONSTRAINT [FK_BoardGames_Categories_BoardGames_BoardGameId] FOREIGN KEY ([BoardGameId]) REFERENCES [BoardGames] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_BoardGames_Categories_Categories_CategoryId] FOREIGN KEY ([CategoryId]) REFERENCES [Categories] ([Id]) ON DELETE CASCADE
+);
+18:24:57 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_BoardGames_PublisherId] ON [BoardGames] ([PublisherId]);
+18:24:57 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_BoardGames_Categories_CategoryId] ON [BoardGames_Categories] ([CategoryId]);
+18:24:57 [ERR] [DESKTOP-07C1BJT #1 ] Failed executing DbCommand (59ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [BoardGames] ADD CONSTRAINT [FK_BoardGames_Publishers_PublisherId] FOREIGN KEY ([PublisherId]) REFERENCES [Publishers] ([Id]) ON DELETE CASCADE;
+18:26:21 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+18:26:21 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+18:26:21 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+18:26:21 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+18:26:21 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+18:26:21 [INF] [DESKTOP-07C1BJT #1 ] Applying migration '20231122211337_second_migration'.
+18:26:21 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Mechanics] ADD [Flags] int NOT NULL DEFAULT 0;
+18:26:21 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Mechanics] ADD [Notes] nvarchar(200) NOT NULL DEFAULT N'';
+18:26:21 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [BoardGames] ADD [AlternateNames] nvarchar(200) NOT NULL DEFAULT N'';
+18:26:21 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (22ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [BoardGames] ADD [Designer] nvarchar(200) NOT NULL DEFAULT N'';
+18:26:21 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (22ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [BoardGames] ADD [Flags] int NOT NULL DEFAULT 0;
+18:26:21 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (22ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [BoardGames] ADD [PublisherId] int NOT NULL DEFAULT 0;
+18:26:21 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Categories] (
+    [Id] int NOT NULL IDENTITY,
+    [Name] nvarchar(200) NOT NULL,
+    [CreatedDate] datetime2 NOT NULL,
+    [LastModifiedDate] datetime2 NOT NULL,
+    CONSTRAINT [PK_Categories] PRIMARY KEY ([Id])
+);
+18:26:21 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Publishers] (
+    [Id] int NOT NULL IDENTITY,
+    [Name] nvarchar(200) NOT NULL,
+    [CreatedDate] datetime2 NOT NULL,
+    [LastModifiedDate] datetime2 NOT NULL,
+    CONSTRAINT [PK_Publishers] PRIMARY KEY ([Id])
+);
+18:26:21 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [BoardGames_Categories] (
+    [BoardGameId] int NOT NULL,
+    [CategoryId] int NOT NULL,
+    [CreatedDate] datetime2 NOT NULL,
+    CONSTRAINT [PK_BoardGames_Categories] PRIMARY KEY ([BoardGameId], [CategoryId]),
+    CONSTRAINT [FK_BoardGames_Categories_BoardGames_BoardGameId] FOREIGN KEY ([BoardGameId]) REFERENCES [BoardGames] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_BoardGames_Categories_Categories_CategoryId] FOREIGN KEY ([CategoryId]) REFERENCES [Categories] ([Id]) ON DELETE CASCADE
+);
+18:26:21 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_BoardGames_PublisherId] ON [BoardGames] ([PublisherId]);
+18:26:21 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_BoardGames_Categories_CategoryId] ON [BoardGames_Categories] ([CategoryId]);
+18:26:22 [ERR] [DESKTOP-07C1BJT #1 ] Failed executing DbCommand (94ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [BoardGames] ADD CONSTRAINT [FK_BoardGames_Publishers_PublisherId] FOREIGN KEY ([PublisherId]) REFERENCES [Publishers] ([Id]) ON DELETE CASCADE;
+18:26:39 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+18:26:39 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+18:26:39 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+18:26:39 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+18:26:39 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+18:26:39 [INF] [DESKTOP-07C1BJT #1 ] Applying migration '20231122211337_second_migration'.
+18:26:39 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Mechanics] ADD [Flags] int NOT NULL DEFAULT 0;
+18:26:39 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Mechanics] ADD [Notes] nvarchar(200) NOT NULL DEFAULT N'';
+18:26:39 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (22ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [BoardGames] ADD [AlternateNames] nvarchar(200) NOT NULL DEFAULT N'';
+18:26:39 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (22ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [BoardGames] ADD [Designer] nvarchar(200) NOT NULL DEFAULT N'';
+18:26:39 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (21ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [BoardGames] ADD [Flags] int NOT NULL DEFAULT 0;
+18:26:39 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (21ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [BoardGames] ADD [PublisherId] int NOT NULL DEFAULT 0;
+18:26:39 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Categories] (
+    [Id] int NOT NULL IDENTITY,
+    [Name] nvarchar(200) NOT NULL,
+    [CreatedDate] datetime2 NOT NULL,
+    [LastModifiedDate] datetime2 NOT NULL,
+    CONSTRAINT [PK_Categories] PRIMARY KEY ([Id])
+);
+18:26:39 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Publishers] (
+    [Id] int NOT NULL IDENTITY,
+    [Name] nvarchar(200) NOT NULL,
+    [CreatedDate] datetime2 NOT NULL,
+    [LastModifiedDate] datetime2 NOT NULL,
+    CONSTRAINT [PK_Publishers] PRIMARY KEY ([Id])
+);
+18:26:39 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [BoardGames_Categories] (
+    [BoardGameId] int NOT NULL,
+    [CategoryId] int NOT NULL,
+    [CreatedDate] datetime2 NOT NULL,
+    CONSTRAINT [PK_BoardGames_Categories] PRIMARY KEY ([BoardGameId], [CategoryId]),
+    CONSTRAINT [FK_BoardGames_Categories_BoardGames_BoardGameId] FOREIGN KEY ([BoardGameId]) REFERENCES [BoardGames] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_BoardGames_Categories_Categories_CategoryId] FOREIGN KEY ([CategoryId]) REFERENCES [Categories] ([Id]) ON DELETE CASCADE
+);
+18:26:39 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_BoardGames_PublisherId] ON [BoardGames] ([PublisherId]);
+18:26:39 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_BoardGames_Categories_CategoryId] ON [BoardGames_Categories] ([CategoryId]);
+18:26:39 [ERR] [DESKTOP-07C1BJT #1 ] Failed executing DbCommand (88ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [BoardGames] ADD CONSTRAINT [FK_BoardGames_Publishers_PublisherId] FOREIGN KEY ([PublisherId]) REFERENCES [Publishers] ([Id]) ON DELETE CASCADE;
+18:26:57 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+18:26:57 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+18:26:57 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+18:26:57 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+18:26:57 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+18:26:57 [INF] [DESKTOP-07C1BJT #1 ] Applying migration '20231122211337_second_migration'.
+18:26:57 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Mechanics] ADD [Flags] int NOT NULL DEFAULT 0;
+18:26:57 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Mechanics] ADD [Notes] nvarchar(200) NOT NULL DEFAULT N'';
+18:26:57 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (22ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [BoardGames] ADD [AlternateNames] nvarchar(200) NOT NULL DEFAULT N'';
+18:26:57 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (22ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [BoardGames] ADD [Designer] nvarchar(200) NOT NULL DEFAULT N'';
+18:26:57 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (22ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [BoardGames] ADD [Flags] int NOT NULL DEFAULT 0;
+18:26:57 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (23ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [BoardGames] ADD [PublisherId] int NOT NULL DEFAULT 0;
+18:26:57 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Categories] (
+    [Id] int NOT NULL IDENTITY,
+    [Name] nvarchar(200) NOT NULL,
+    [CreatedDate] datetime2 NOT NULL,
+    [LastModifiedDate] datetime2 NOT NULL,
+    CONSTRAINT [PK_Categories] PRIMARY KEY ([Id])
+);
+18:26:57 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Publishers] (
+    [Id] int NOT NULL IDENTITY,
+    [Name] nvarchar(200) NOT NULL,
+    [CreatedDate] datetime2 NOT NULL,
+    [LastModifiedDate] datetime2 NOT NULL,
+    CONSTRAINT [PK_Publishers] PRIMARY KEY ([Id])
+);
+18:26:57 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [BoardGames_Categories] (
+    [BoardGameId] int NOT NULL,
+    [CategoryId] int NOT NULL,
+    [CreatedDate] datetime2 NOT NULL,
+    CONSTRAINT [PK_BoardGames_Categories] PRIMARY KEY ([BoardGameId], [CategoryId]),
+    CONSTRAINT [FK_BoardGames_Categories_BoardGames_BoardGameId] FOREIGN KEY ([BoardGameId]) REFERENCES [BoardGames] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_BoardGames_Categories_Categories_CategoryId] FOREIGN KEY ([CategoryId]) REFERENCES [Categories] ([Id]) ON DELETE CASCADE
+);
+18:26:57 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_BoardGames_PublisherId] ON [BoardGames] ([PublisherId]);
+18:26:57 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_BoardGames_Categories_CategoryId] ON [BoardGames_Categories] ([CategoryId]);
+18:26:57 [ERR] [DESKTOP-07C1BJT #1 ] Failed executing DbCommand (92ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [BoardGames] ADD CONSTRAINT [FK_BoardGames_Publishers_PublisherId] FOREIGN KEY ([PublisherId]) REFERENCES [Publishers] ([Id]) ON DELETE CASCADE;
+18:28:00 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+18:28:00 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+18:28:00 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+18:28:00 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+18:28:00 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+18:28:00 [INF] [DESKTOP-07C1BJT #1 ] Applying migration '20231122211337_second_migration'.
+18:28:00 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Mechanics] ADD [Flags] int NOT NULL DEFAULT 0;
+18:28:00 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Mechanics] ADD [Notes] nvarchar(200) NOT NULL DEFAULT N'';
+18:28:00 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (22ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [BoardGames] ADD [AlternateNames] nvarchar(200) NOT NULL DEFAULT N'';
+18:28:00 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (22ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [BoardGames] ADD [Designer] nvarchar(200) NOT NULL DEFAULT N'';
+18:28:00 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (22ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [BoardGames] ADD [Flags] int NOT NULL DEFAULT 0;
+18:28:00 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (22ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [BoardGames] ADD [PublisherId] int NOT NULL DEFAULT 0;
+18:28:00 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Categories] (
+    [Id] int NOT NULL IDENTITY,
+    [Name] nvarchar(200) NOT NULL,
+    [CreatedDate] datetime2 NOT NULL,
+    [LastModifiedDate] datetime2 NOT NULL,
+    CONSTRAINT [PK_Categories] PRIMARY KEY ([Id])
+);
+18:28:00 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Publishers] (
+    [Id] int NOT NULL IDENTITY,
+    [Name] nvarchar(200) NOT NULL,
+    [CreatedDate] datetime2 NOT NULL,
+    [LastModifiedDate] datetime2 NOT NULL,
+    CONSTRAINT [PK_Publishers] PRIMARY KEY ([Id])
+);
+18:28:00 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [BoardGames_Categories] (
+    [BoardGameId] int NOT NULL,
+    [CategoryId] int NOT NULL,
+    [CreatedDate] datetime2 NOT NULL,
+    CONSTRAINT [PK_BoardGames_Categories] PRIMARY KEY ([BoardGameId], [CategoryId]),
+    CONSTRAINT [FK_BoardGames_Categories_BoardGames_BoardGameId] FOREIGN KEY ([BoardGameId]) REFERENCES [BoardGames] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_BoardGames_Categories_Categories_CategoryId] FOREIGN KEY ([CategoryId]) REFERENCES [Categories] ([Id]) ON DELETE CASCADE
+);
+18:28:00 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_BoardGames_PublisherId] ON [BoardGames] ([PublisherId]);
+18:28:00 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_BoardGames_Categories_CategoryId] ON [BoardGames_Categories] ([CategoryId]);
+18:28:00 [ERR] [DESKTOP-07C1BJT #1 ] Failed executing DbCommand (91ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [BoardGames] ADD CONSTRAINT [FK_BoardGames_Publishers_PublisherId] FOREIGN KEY ([PublisherId]) REFERENCES [Publishers] ([Id]) ON DELETE CASCADE;
+18:30:28 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+18:30:28 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+18:30:28 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+18:30:28 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+18:30:28 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+18:30:28 [INF] [DESKTOP-07C1BJT #1 ] Applying migration '20231122211337_second_migration'.
+18:30:28 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Mechanics] ADD [Flags] int NOT NULL DEFAULT 0;
+18:30:28 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Mechanics] ADD [Notes] nvarchar(200) NOT NULL DEFAULT N'';
+18:30:28 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (23ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [BoardGames] ADD [AlternateNames] nvarchar(200) NOT NULL DEFAULT N'';
+18:30:28 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (21ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [BoardGames] ADD [Designer] nvarchar(200) NOT NULL DEFAULT N'';
+18:30:28 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (19ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [BoardGames] ADD [Flags] int NOT NULL DEFAULT 0;
+18:30:28 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [BoardGames] ADD [PublisherId] int NOT NULL DEFAULT 0;
+18:30:28 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Categories] (
+    [Id] int NOT NULL IDENTITY,
+    [Name] nvarchar(200) NOT NULL,
+    [CreatedDate] datetime2 NOT NULL,
+    [LastModifiedDate] datetime2 NOT NULL,
+    CONSTRAINT [PK_Categories] PRIMARY KEY ([Id])
+);
+18:30:28 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Publishers] (
+    [Id] int NOT NULL IDENTITY,
+    [Name] nvarchar(200) NOT NULL,
+    [CreatedDate] datetime2 NOT NULL,
+    [LastModifiedDate] datetime2 NOT NULL,
+    CONSTRAINT [PK_Publishers] PRIMARY KEY ([Id])
+);
+18:30:28 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [BoardGames_Categories] (
+    [BoardGameId] int NOT NULL,
+    [CategoryId] int NOT NULL,
+    [CreatedDate] datetime2 NOT NULL,
+    CONSTRAINT [PK_BoardGames_Categories] PRIMARY KEY ([BoardGameId], [CategoryId]),
+    CONSTRAINT [FK_BoardGames_Categories_BoardGames_BoardGameId] FOREIGN KEY ([BoardGameId]) REFERENCES [BoardGames] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_BoardGames_Categories_Categories_CategoryId] FOREIGN KEY ([CategoryId]) REFERENCES [Categories] ([Id]) ON DELETE CASCADE
+);
+18:30:28 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_BoardGames_PublisherId] ON [BoardGames] ([PublisherId]);
+18:30:28 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_BoardGames_Categories_CategoryId] ON [BoardGames_Categories] ([CategoryId]);
+18:30:28 [ERR] [DESKTOP-07C1BJT #1 ] Failed executing DbCommand (62ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [BoardGames] ADD CONSTRAINT [FK_BoardGames_Publishers_PublisherId] FOREIGN KEY ([PublisherId]) REFERENCES [Publishers] ([Id]) ON DELETE CASCADE;
+18:31:28 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+18:31:28 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+18:31:28 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+18:31:28 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+18:31:28 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+18:31:28 [INF] [DESKTOP-07C1BJT #1 ] No migrations were applied. The database is already up to date.
+18:31:59 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+18:31:59 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+18:31:59 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+18:31:59 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+18:32:00 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+18:32:00 [INF] [DESKTOP-07C1BJT #1 ] Applying migration '20231122211337_second_migration'.
+18:32:00 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Mechanics] ADD [Flags] int NOT NULL DEFAULT 0;
+18:32:00 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Mechanics] ADD [Notes] nvarchar(200) NOT NULL DEFAULT N'';
+18:32:00 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [BoardGames] ADD [AlternateNames] nvarchar(200) NOT NULL DEFAULT N'';
+18:32:00 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [BoardGames] ADD [Designer] nvarchar(200) NOT NULL DEFAULT N'';
+18:32:00 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [BoardGames] ADD [Flags] int NOT NULL DEFAULT 0;
+18:32:00 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [BoardGames] ADD [PublisherId] int NOT NULL DEFAULT 0;
+18:32:00 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Categories] (
+    [Id] int NOT NULL IDENTITY,
+    [Name] nvarchar(200) NOT NULL,
+    [CreatedDate] datetime2 NOT NULL,
+    [LastModifiedDate] datetime2 NOT NULL,
+    CONSTRAINT [PK_Categories] PRIMARY KEY ([Id])
+);
+18:32:00 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Publishers] (
+    [Id] int NOT NULL IDENTITY,
+    [Name] nvarchar(200) NOT NULL,
+    [CreatedDate] datetime2 NOT NULL,
+    [LastModifiedDate] datetime2 NOT NULL,
+    CONSTRAINT [PK_Publishers] PRIMARY KEY ([Id])
+);
+18:32:00 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [BoardGames_Categories] (
+    [BoardGameId] int NOT NULL,
+    [CategoryId] int NOT NULL,
+    [CreatedDate] datetime2 NOT NULL,
+    CONSTRAINT [PK_BoardGames_Categories] PRIMARY KEY ([BoardGameId], [CategoryId]),
+    CONSTRAINT [FK_BoardGames_Categories_BoardGames_BoardGameId] FOREIGN KEY ([BoardGameId]) REFERENCES [BoardGames] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_BoardGames_Categories_Categories_CategoryId] FOREIGN KEY ([CategoryId]) REFERENCES [Categories] ([Id]) ON DELETE CASCADE
+);
+18:32:00 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_BoardGames_PublisherId] ON [BoardGames] ([PublisherId]);
+18:32:00 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_BoardGames_Categories_CategoryId] ON [BoardGames_Categories] ([CategoryId]);
+18:32:00 [ERR] [DESKTOP-07C1BJT #1 ] Failed executing DbCommand (58ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [BoardGames] ADD CONSTRAINT [FK_BoardGames_Publishers_PublisherId] FOREIGN KEY ([PublisherId]) REFERENCES [Publishers] ([Id]) ON DELETE CASCADE;
+18:35:18 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+18:35:18 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+18:35:18 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+18:35:18 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+18:35:18 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+18:35:18 [INF] [DESKTOP-07C1BJT #1 ] Applying migration '20231122211337_second_migration'.
+18:35:18 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Mechanics] ADD [Flags] int NOT NULL DEFAULT 0;
+18:35:18 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Mechanics] ADD [Notes] nvarchar(200) NOT NULL DEFAULT N'';
+18:35:18 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [BoardGames] ADD [AlternateNames] nvarchar(200) NOT NULL DEFAULT N'';
+18:35:18 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [BoardGames] ADD [Designer] nvarchar(200) NOT NULL DEFAULT N'';
+18:35:18 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [BoardGames] ADD [Flags] int NOT NULL DEFAULT 0;
+18:35:18 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [BoardGames] ADD [PublisherId] int NOT NULL DEFAULT 0;
+18:35:18 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Categories] (
+    [Id] int NOT NULL IDENTITY,
+    [Name] nvarchar(200) NOT NULL,
+    [CreatedDate] datetime2 NOT NULL,
+    [LastModifiedDate] datetime2 NOT NULL,
+    CONSTRAINT [PK_Categories] PRIMARY KEY ([Id])
+);
+18:35:18 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Publishers] (
+    [Id] int NOT NULL IDENTITY,
+    [Name] nvarchar(200) NOT NULL,
+    [CreatedDate] datetime2 NOT NULL,
+    [LastModifiedDate] datetime2 NOT NULL,
+    CONSTRAINT [PK_Publishers] PRIMARY KEY ([Id])
+);
+18:35:18 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [BoardGames_Categories] (
+    [BoardGameId] int NOT NULL,
+    [CategoryId] int NOT NULL,
+    [CreatedDate] datetime2 NOT NULL,
+    CONSTRAINT [PK_BoardGames_Categories] PRIMARY KEY ([BoardGameId], [CategoryId]),
+    CONSTRAINT [FK_BoardGames_Categories_BoardGames_BoardGameId] FOREIGN KEY ([BoardGameId]) REFERENCES [BoardGames] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_BoardGames_Categories_Categories_CategoryId] FOREIGN KEY ([CategoryId]) REFERENCES [Categories] ([Id]) ON DELETE CASCADE
+);
+18:35:18 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_BoardGames_PublisherId] ON [BoardGames] ([PublisherId]);
+18:35:18 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_BoardGames_Categories_CategoryId] ON [BoardGames_Categories] ([CategoryId]);
+18:35:18 [ERR] [DESKTOP-07C1BJT #1 ] Failed executing DbCommand (58ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [BoardGames] ADD CONSTRAINT [FK_BoardGames_Publishers_PublisherId] FOREIGN KEY ([PublisherId]) REFERENCES [Publishers] ([Id]) ON DELETE CASCADE;
+18:35:47 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+18:35:47 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+18:35:47 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+18:35:47 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+18:35:47 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+18:35:47 [INF] [DESKTOP-07C1BJT #1 ] Applying migration '20231206163540_Identity'.
+18:35:47 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetRoles] (
+    [Id] nvarchar(450) NOT NULL,
+    [Name] nvarchar(256) NULL,
+    [NormalizedName] nvarchar(256) NULL,
+    [ConcurrencyStamp] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetRoles] PRIMARY KEY ([Id])
+);
+18:35:47 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUsers] (
+    [Id] nvarchar(450) NOT NULL,
+    [UserName] nvarchar(256) NULL,
+    [NormalizedUserName] nvarchar(256) NULL,
+    [Email] nvarchar(256) NULL,
+    [NormalizedEmail] nvarchar(256) NULL,
+    [EmailConfirmed] bit NOT NULL,
+    [PasswordHash] nvarchar(max) NULL,
+    [SecurityStamp] nvarchar(max) NULL,
+    [ConcurrencyStamp] nvarchar(max) NULL,
+    [PhoneNumber] nvarchar(max) NULL,
+    [PhoneNumberConfirmed] bit NOT NULL,
+    [TwoFactorEnabled] bit NOT NULL,
+    [LockoutEnd] datetimeoffset NULL,
+    [LockoutEnabled] bit NOT NULL,
+    [AccessFailedCount] int NOT NULL,
+    CONSTRAINT [PK_AspNetUsers] PRIMARY KEY ([Id])
+);
+18:35:47 [ERR] [DESKTOP-07C1BJT #1 ] Failed executing DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [BoardGames] (
+    [Id] int NOT NULL IDENTITY,
+    [Name] nvarchar(200) NOT NULL,
+    [Year] int NOT NULL,
+    [MinPlayers] int NOT NULL,
+    [MaxPlayers] int NOT NULL,
+    [PlayTime] int NOT NULL,
+    [MinAge] int NOT NULL,
+    [UsersRated] int NOT NULL,
+    [RatingAverage] decimal(4,2) NOT NULL,
+    [BGGRank] int NOT NULL,
+    [ComplexityAverage] decimal(4,2) NOT NULL,
+    [OwnedUsers] int NOT NULL,
+    [CreatedDate] datetime2 NOT NULL,
+    [LastModifiedDate] datetime2 NOT NULL,
+    CONSTRAINT [PK_BoardGames] PRIMARY KEY ([Id])
+);
+19:10:22 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+19:10:22 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+19:10:22 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+19:10:22 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [__EFMigrationsHistory] (
+    [MigrationId] nvarchar(150) NOT NULL,
+    [ProductVersion] nvarchar(32) NOT NULL,
+    CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+);
+19:10:22 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+19:10:22 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+19:10:22 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+19:10:22 [INF] [DESKTOP-07C1BJT #1 ] Applying migration '20231206170955_Initial'.
+19:10:22 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetRoles] (
+    [Id] nvarchar(450) NOT NULL,
+    [Name] nvarchar(256) NULL,
+    [NormalizedName] nvarchar(256) NULL,
+    [ConcurrencyStamp] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetRoles] PRIMARY KEY ([Id])
+);
+19:10:22 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUsers] (
+    [Id] nvarchar(450) NOT NULL,
+    [UserName] nvarchar(256) NULL,
+    [NormalizedUserName] nvarchar(256) NULL,
+    [Email] nvarchar(256) NULL,
+    [NormalizedEmail] nvarchar(256) NULL,
+    [EmailConfirmed] bit NOT NULL,
+    [PasswordHash] nvarchar(max) NULL,
+    [SecurityStamp] nvarchar(max) NULL,
+    [ConcurrencyStamp] nvarchar(max) NULL,
+    [PhoneNumber] nvarchar(max) NULL,
+    [PhoneNumberConfirmed] bit NOT NULL,
+    [TwoFactorEnabled] bit NOT NULL,
+    [LockoutEnd] datetimeoffset NULL,
+    [LockoutEnabled] bit NOT NULL,
+    [AccessFailedCount] int NOT NULL,
+    CONSTRAINT [PK_AspNetUsers] PRIMARY KEY ([Id])
+);
+19:10:22 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [BoardGames] (
+    [Id] int NOT NULL IDENTITY,
+    [Name] nvarchar(200) NOT NULL,
+    [Year] int NOT NULL,
+    [MinPlayers] int NOT NULL,
+    [MaxPlayers] int NOT NULL,
+    [PlayTime] int NOT NULL,
+    [MinAge] int NOT NULL,
+    [UsersRated] int NOT NULL,
+    [RatingAverage] decimal(4,2) NOT NULL,
+    [BGGRank] int NOT NULL,
+    [ComplexityAverage] decimal(4,2) NOT NULL,
+    [OwnedUsers] int NOT NULL,
+    [CreatedDate] datetime2 NOT NULL,
+    [LastModifiedDate] datetime2 NOT NULL,
+    CONSTRAINT [PK_BoardGames] PRIMARY KEY ([Id])
+);
+19:10:22 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Domains] (
+    [Id] int NOT NULL IDENTITY,
+    [Name] nvarchar(200) NOT NULL,
+    [CreatedDate] datetime2 NOT NULL,
+    [LastModifiedDate] datetime2 NOT NULL,
+    CONSTRAINT [PK_Domains] PRIMARY KEY ([Id])
+);
+19:10:22 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Mechanics] (
+    [Id] int NOT NULL IDENTITY,
+    [Name] nvarchar(200) NOT NULL,
+    [CreatedDate] datetime2 NOT NULL,
+    [LastModifiedDate] datetime2 NOT NULL,
+    CONSTRAINT [PK_Mechanics] PRIMARY KEY ([Id])
+);
+19:10:22 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetRoleClaims] (
+    [Id] int NOT NULL IDENTITY,
+    [RoleId] nvarchar(450) NOT NULL,
+    [ClaimType] nvarchar(max) NULL,
+    [ClaimValue] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetRoleClaims] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_AspNetRoleClaims_AspNetRoles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [AspNetRoles] ([Id]) ON DELETE CASCADE
+);
+19:10:22 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUserClaims] (
+    [Id] int NOT NULL IDENTITY,
+    [UserId] nvarchar(450) NOT NULL,
+    [ClaimType] nvarchar(max) NULL,
+    [ClaimValue] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetUserClaims] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_AspNetUserClaims_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+19:10:22 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUserLogins] (
+    [LoginProvider] nvarchar(450) NOT NULL,
+    [ProviderKey] nvarchar(450) NOT NULL,
+    [ProviderDisplayName] nvarchar(max) NULL,
+    [UserId] nvarchar(450) NOT NULL,
+    CONSTRAINT [PK_AspNetUserLogins] PRIMARY KEY ([LoginProvider], [ProviderKey]),
+    CONSTRAINT [FK_AspNetUserLogins_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+19:10:22 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUserRoles] (
+    [UserId] nvarchar(450) NOT NULL,
+    [RoleId] nvarchar(450) NOT NULL,
+    CONSTRAINT [PK_AspNetUserRoles] PRIMARY KEY ([UserId], [RoleId]),
+    CONSTRAINT [FK_AspNetUserRoles_AspNetRoles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [AspNetRoles] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_AspNetUserRoles_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+19:10:22 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUserTokens] (
+    [UserId] nvarchar(450) NOT NULL,
+    [LoginProvider] nvarchar(450) NOT NULL,
+    [Name] nvarchar(450) NOT NULL,
+    [Value] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetUserTokens] PRIMARY KEY ([UserId], [LoginProvider], [Name]),
+    CONSTRAINT [FK_AspNetUserTokens_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+19:10:22 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [BoardGames_Domains] (
+    [BoardGameId] int NOT NULL,
+    [DomainId] int NOT NULL,
+    [CreatedDate] datetime2 NOT NULL,
+    CONSTRAINT [PK_BoardGames_Domains] PRIMARY KEY ([BoardGameId], [DomainId]),
+    CONSTRAINT [FK_BoardGames_Domains_BoardGames_BoardGameId] FOREIGN KEY ([BoardGameId]) REFERENCES [BoardGames] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_BoardGames_Domains_Domains_DomainId] FOREIGN KEY ([DomainId]) REFERENCES [Domains] ([Id]) ON DELETE CASCADE
+);
+19:10:22 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [BoardGames_Mechanics] (
+    [BoardGameId] int NOT NULL,
+    [MechanicId] int NOT NULL,
+    [CreatedDate] datetime2 NOT NULL,
+    CONSTRAINT [PK_BoardGames_Mechanics] PRIMARY KEY ([BoardGameId], [MechanicId]),
+    CONSTRAINT [FK_BoardGames_Mechanics_BoardGames_BoardGameId] FOREIGN KEY ([BoardGameId]) REFERENCES [BoardGames] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_BoardGames_Mechanics_Mechanics_MechanicId] FOREIGN KEY ([MechanicId]) REFERENCES [Mechanics] ([Id]) ON DELETE CASCADE
+);
+19:10:22 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_AspNetRoleClaims_RoleId] ON [AspNetRoleClaims] ([RoleId]);
+19:10:22 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX [RoleNameIndex] ON [AspNetRoles] ([NormalizedName]) WHERE [NormalizedName] IS NOT NULL;
+19:10:22 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_AspNetUserClaims_UserId] ON [AspNetUserClaims] ([UserId]);
+19:10:22 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_AspNetUserLogins_UserId] ON [AspNetUserLogins] ([UserId]);
+19:10:22 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_AspNetUserRoles_RoleId] ON [AspNetUserRoles] ([RoleId]);
+19:10:22 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [EmailIndex] ON [AspNetUsers] ([NormalizedEmail]);
+19:10:22 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX [UserNameIndex] ON [AspNetUsers] ([NormalizedUserName]) WHERE [NormalizedUserName] IS NOT NULL;
+19:10:22 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_BoardGames_Domains_DomainId] ON [BoardGames_Domains] ([DomainId]);
+19:10:22 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_BoardGames_Mechanics_MechanicId] ON [BoardGames_Mechanics] ([MechanicId]);
+19:10:22 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20231206170955_Initial', N'7.0.14');
+19:14:47 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+19:14:48 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+19:14:48 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+19:14:48 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+19:14:48 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+19:14:48 [INF] [DESKTOP-07C1BJT #1 ] Applying migration '20231206171439_Initial2'.
+19:14:48 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Mechanics] ADD [Flags] int NOT NULL DEFAULT 0;
+19:14:48 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Mechanics] ADD [Notes] nvarchar(200) NOT NULL DEFAULT N'';
+19:14:48 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20231206171439_Initial2', N'7.0.14');
+19:17:48 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+19:17:48 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+19:17:48 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+19:17:48 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+19:17:48 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+19:17:48 [INF] [DESKTOP-07C1BJT #1 ] Applying migration '20231206171740_Initial3'.
+19:17:48 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DROP TABLE [AspNetRoleClaims];
+19:17:48 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DROP TABLE [AspNetUserClaims];
+19:17:48 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DROP TABLE [AspNetUserLogins];
+19:17:48 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DROP TABLE [AspNetUserRoles];
+19:17:48 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DROP TABLE [AspNetUserTokens];
+19:17:48 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DROP TABLE [AspNetRoles];
+19:17:48 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DROP TABLE [AspNetUsers];
+19:17:48 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20231206171740_Initial3', N'7.0.14');
+19:26:48 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+19:26:48 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+19:26:48 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+19:26:48 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+19:26:48 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+19:26:48 [INF] [DESKTOP-07C1BJT #1 ] Applying migration '20231206172628_Identity'.
+19:26:48 [INF] [DESKTOP-07C1BJT #1 ] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20231206172628_Identity', N'7.0.14');

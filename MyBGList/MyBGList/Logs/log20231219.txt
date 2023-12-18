@@ -1,0 +1,5 @@
+00:24:41 [INF] [DESKTOP-07C1BJT #1 ] Now listening on: http://localhost:40443
+00:24:41 [INF] [DESKTOP-07C1BJT #1 ] Now listening on: http://localhost:40080
+00:24:41 [INF] [DESKTOP-07C1BJT #1 ] Application started. Press Ctrl+C to shut down.
+00:24:41 [INF] [DESKTOP-07C1BJT #1 ] Hosting environment: Development
+00:24:41 [INF] [DESKTOP-07C1BJT #1 ] Content root path: D:\ProjectsFromBooks\BuildingWebAPIsWithASPNETCore\MyBGList\MyBGList

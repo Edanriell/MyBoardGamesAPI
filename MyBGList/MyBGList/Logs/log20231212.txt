@@ -1,0 +1,30 @@
+22:06:59 [INF] [DESKTOP-07C1BJT #1 ] Now listening on: http://localhost:40443
+22:06:59 [INF] [DESKTOP-07C1BJT #1 ] Now listening on: http://localhost:40080
+22:06:59 [INF] [DESKTOP-07C1BJT #1 ] Application started. Press Ctrl+C to shut down.
+22:06:59 [INF] [DESKTOP-07C1BJT #1 ] Hosting environment: Development
+22:06:59 [INF] [DESKTOP-07C1BJT #1 ] Content root path: D:\ProjectsFromBooks\BuildingWebAPIsWithASPNETCore\MyBGList\MyBGList
+22:07:09 [WRN] [DESKTOP-07C1BJT #17 .NET ThreadPool Worker] Failed to determine the https port for redirect.
+22:07:10 [WRN] [DESKTOP-07C1BJT #11 .NET ThreadPool Worker] Unable to configure browser refresh script injection on the response. This may have been caused by the response's Content-Encoding: '["br"]'. Consider disabling response compression.
+22:08:43 [INF] [DESKTOP-07C1BJT #3 .NET ThreadPool Worker] Executed DbCommand (50ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(@__p_0) [b].[Id], [b].[Name], [b].[Year]
+FROM [BoardGames] AS [b]
+ORDER BY [b].[Id]
+22:10:23 [WRN] [DESKTOP-07C1BJT #32 .NET ThreadPool Worker] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+22:10:23 [INF] [DESKTOP-07C1BJT #32 .NET ThreadPool Worker] Executed DbCommand (24ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Name], [t].[Year], [t0].[c], [t0].[Name], [t0].[BoardGameId], [t0].[DomainId], [t0].[Id], [t1].[c], [t1].[Name], [t1].[BoardGameId], [t1].[MechanicId], [t1].[Id]
+FROM (
+    SELECT TOP(@__p_0) [b].[Id], [b].[Name], [b].[Year]
+    FROM [BoardGames] AS [b]
+    ORDER BY [b].[Id]
+) AS [t]
+LEFT JOIN (
+    SELECT CAST(1 AS bit) AS [c], [d].[Name], [b0].[BoardGameId], [b0].[DomainId], [d].[Id]
+    FROM [BoardGames_Domains] AS [b0]
+    INNER JOIN [Domains] AS [d] ON [b0].[DomainId] = [d].[Id]
+) AS [t0] ON [t].[Id] = [t0].[BoardGameId]
+LEFT JOIN (
+    SELECT CAST(1 AS bit) AS [c], [m].[Name], [b1].[BoardGameId], [b1].[MechanicId], [m].[Id]
+    FROM [BoardGames_Mechanics] AS [b1]
+    INNER JOIN [Mechanics] AS [m] ON [b1].[MechanicId] = [m].[Id]
+) AS [t1] ON [t].[Id] = [t1].[BoardGameId]
+ORDER BY [t].[Id], [t0].[BoardGameId], [t0].[DomainId], [t0].[Id], [t1].[BoardGameId], [t1].[MechanicId]
